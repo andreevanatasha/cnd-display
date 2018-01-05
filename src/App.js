@@ -23,6 +23,7 @@ class App extends Component {
         let usd = data[0]['price_usd'];
         let btc = data[0]['price_btc'];
         let mBTC = btc * 1000;
+        mBTC = mBTC.toFixed(6);
         //console.log(usd);
         this.setState({usd_price: usd, btc_price: mBTC});
     })
@@ -34,8 +35,9 @@ class App extends Component {
     .then((response) => response.json())
     .then((data) => {
         let usd = data[0]['price_usd'];
+        console.log(usd);
         let eth = parseFloat(this.state.usd_price) / usd;
-        let finney = eth.toFixed(10) * 1000;
+        let finney = eth.toFixed(9) * 1000;
         console.log(finney);
         this.setState({eth_price: finney});
     })
@@ -45,7 +47,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.interval = setInterval(() => this.updatePrice(), 1000);
+    this.updatePrice();
+    this.interval = setInterval(() => this.updatePrice(), 10000);
   }
 
   componentWillUnmount() {
