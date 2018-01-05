@@ -7,22 +7,49 @@ class App extends Component {
   constructor() {
       super();
       this.state = {
-          eth_price: '',
+          usd_price: '',
+          btc_price: '',
+          eth_price: ''
       };
+
+      this.updatePrice = this.updatePrice.bind(this);
   }
 
-  componentDidMount() {
+  updatePrice() {
     fetch('https://api.coinmarketcap.com/v1/ticker/cindicator/', {header: {'Access-Control-Allow-Origin': '*'}})
     .then((response) => response.json())
     .then((data) => {
-        console.log(data);
-        let price = data[0]['price_usd'];
-        console.log(price);
-        this.setState({eth_price: price});
+        //console.log(data);
+        let usd = data[0]['price_usd'];
+        let btc = data[0]['price_btc'];
+        let mBTC = btc * 1000;
+        //console.log(usd);
+        this.setState({usd_price: usd, btc_price: mBTC});
     })
     .catch((error) => {
       console.error(error);
     });
+
+    fetch('https://api.coinmarketcap.com/v1/ticker/ethereum/', {header: {'Access-Control-Allow-Origin': '*'}})
+    .then((response) => response.json())
+    .then((data) => {
+        let usd = data[0]['price_usd'];
+        let eth = parseFloat(this.state.usd_price) / usd;
+        let finney = eth.toFixed(10) * 1000;
+        console.log(finney);
+        this.setState({eth_price: finney});
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  }
+
+  componentDidMount() {
+    this.interval = setInterval(() => this.updatePrice(), 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   render() {
@@ -30,7 +57,9 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">{this.state.eth_price}</h1>
+          <h1 className="App-title">{this.state.usd_price} USD</h1>
+          <h1 className="App-title">{this.state.btc_price} mBTC</h1>
+          <h1 className="App-title">{this.state.eth_price} mETH</h1>
         </header>
       </div>
     );
