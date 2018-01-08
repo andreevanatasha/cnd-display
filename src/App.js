@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.jpg';
+import logo from './logo.png';
 import './App.css';
 
 
@@ -12,7 +12,9 @@ class App extends Component {
         eth_price: '',
         prices_loaded: false,
         change: '',
-        change_color: 'white'
+        change_color: 'white',
+        change_1h: '',
+        change_1h_color: 'white'
       };
 
       this.updatePrice = this.updatePrice.bind(this);
@@ -26,6 +28,7 @@ class App extends Component {
         let usd = data[0]['price_usd'];
         let btc = data[0]['price_btc'];
         let change = data[0]['percent_change_24h'];
+        let change_1h = data[0]['percent_change_1h'];
         let mBTC = btc * 1000;
         mBTC = mBTC.toFixed(6);
         //console.log(usd);
@@ -36,7 +39,13 @@ class App extends Component {
           this.setState({change_color: 'red'});
         };
 
-        this.setState({usd_price: usd, btc_price: mBTC, change: change});
+        if ( change_1h >= 0 ) {
+          this.setState({change_1h_color: 'green'});
+        } else {
+          this.setState({change_1h_color: 'red'});
+        };
+
+        this.setState({usd_price: usd, btc_price: mBTC, change: change, change_1h: change_1h});
     })
     .catch((error) => {
       console.error(error);
@@ -61,7 +70,7 @@ class App extends Component {
 
   componentDidMount() {
     this.updatePrice();
-    this.interval = setInterval(() => this.updatePrice(), 10000);
+    this.interval = setInterval(() => this.updatePrice(), 60000);
   }
 
   componentWillUnmount() {
@@ -71,18 +80,22 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
           {
             this.state.prices_loaded ? (
               <div>
-                <h1 className="App-title">$ {this.state.usd_price} <span style={{color: this.state.change_color}}>{this.state.change}%</span></h1>
-                <h1 className="App-title">{this.state.btc_price} mBTC</h1>
-                <h1 className="App-title">{this.state.eth_price} mETH</h1> 
+                {/*<img src={logo} className="App-logo" alt="logo" />*/}
+                <div className="prices">
+                  <div className="usd">${this.state.usd_price} </div>
+                  <div className="change"><span style={{color: this.state.change_1h_color}}>{this.state.change_1h}%</span> in 1h || <span style={{color: this.state.change_color}}>{this.state.change}%</span> in 24h</div>
+                  <br /> <br />
+                  <div className="prices.additional">
+                    <div className="btc">{this.state.btc_price} mBTC</div>
+                    <div className="btc">{this.state.eth_price} mETH</div>
+                  </div> 
+                </div>
               </div>
             ) : null
           }
-        </header>
       </div>
     );
   }
