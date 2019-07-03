@@ -6,7 +6,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #110B19;
+  background-color: #0D0520;
   color: white;
   font-family: 'Roboto Mono', monospace;
 }
@@ -41,9 +41,9 @@
 }
 
 .usd {
-  font-size: 12em;
+  font-size: 24em;
   font-weight: 700;
-  text-shadow: 0 0 3px #FF0000;
+  text-shadow: 0 0 3px #3EECC8;
   -webkit-animation: neon2 2.0s ease-in-out infinite alternate;
   -moz-animation: neon2 2.0s ease-in-out infinite alternate;
   animation: neon2 2.0s ease-in-out infinite alternate;
@@ -147,7 +147,7 @@ p:nth-child(1) a:hover {
 
 p:nth-child(2) a {
   font-size: 1.5em;
-  color: #228DFF;
+  color: #3EECC8;
   font-family: Iceland;
 }
 
@@ -218,10 +218,10 @@ p a:hover {
 
 @-webkit-keyframes neon2 {
   from {
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #228DFF, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #3EECC8, 0 0 40px #3EECC8, 0 0 70px #3EECC8, 0 0 80px #3EECC8, 0 0 100px #3EECC8, 0 0 150px #3EECC8;
   }
   to {
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #228DFF, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #3EECC8, 0 0 20px #3EECC8, 0 0 35px #3EECC8, 0 0 40px #3EECC8, 0 0 50px #3EECC8, 0 0 75px #3EECC8;
   }
 }
 
@@ -273,10 +273,10 @@ p a:hover {
 
 @-moz-keyframes neon2 {
   from {
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #3EECC8, 0 0 35px #3EECC8, 0 0 40px #3EECC8, 0 0 50px #3EECC8, 0 0 75px #3EECC8;
   }
   to {
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #3EECC8, 0 0 35px #3EECC8, 0 0 40px #3EECC8, 0 0 50px #3EECC8, 0 0 75px #3EECC8;
   }
 }
 
@@ -328,10 +328,10 @@ p a:hover {
 
 @keyframes neon2 {
   from {
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #3EECC8, 0 0 70px #3EECC8, 0 0 80px #3EECC8, 0 0 100px #3EECC8, 0 0 150px #3EECC8;
   }
   to {
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #3EECC8, 0 0 35px #3EECC8, 0 0 40px #3EECC8, 0 0 50px #3EECC8, 0 0 75px #3EECC8;
   }
 }
 
