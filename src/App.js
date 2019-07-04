@@ -18,7 +18,7 @@ class App extends Component {
   }
 
   updateTime() {
-    let countDownDate = new Date("Dec 9, 2019 03:00:00 UTC").getTime()
+    let countDownDate = new Date("Dec 26, 2019 03:00:00 UTC").getTime()
     let today = new Date().getTime();
     let distance = countDownDate - today;
     let days = Math.floor(distance / (1000 * 60 * 60 * 24));

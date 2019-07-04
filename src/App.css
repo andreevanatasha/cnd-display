@@ -41,12 +41,10 @@
 }
 
 .usd {
-  font-size: 24em;
+  font-size: 30em;
   font-weight: 700;
   text-shadow: 0 0 3px #3EECC8;
-  -webkit-animation: neon2 2.0s ease-in-out infinite alternate;
-  -moz-animation: neon2 2.0s ease-in-out infinite alternate;
-  animation: neon2 2.0s ease-in-out infinite alternate;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #3EECC8, 0 0 35px #3EECC8, 0 0 40px #3EECC8, 0 0 50px #3EECC8, 0 0 75px #3EECC8;
 }
 
 .btc {
