@@ -56,7 +56,10 @@ class App extends Component {
   componentDidMount() {
     this.updateTime();
     this.updatePrice();
-    this.interval = setInterval(() => this.updateTime(), 600000);
+    this.interval = setInterval(() => function () {
+        this.updateTime();
+        this.updatePrice();
+    }, 600000);
   }
 
   componentWillUnmount() {
