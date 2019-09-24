@@ -10,11 +10,13 @@ class App extends Component {
         prices_loaded: true,
         usd_price: '',
         change: '',
+        change_sign: '',
         change_color: 'white',
         countdown: ''
       };
 
       this.updateTime = this.updateTime.bind(this);
+      this.updatePrice = this.updatePrice.bind(this);
   }
 
   async updatePrice() {
@@ -31,9 +33,9 @@ class App extends Component {
         console.log(usd);
 
         if ( change >= 0 ) {
-          this.setState({change_color: '#3EECC8'});
+          this.setState({change_color: '#3EECC8', change_sign: '+'});
         } else {
-          this.setState({change_color: '#FF4B8C'});
+          this.setState({change_color: '#FF4B8C', change_sign: ''});
         };
 
         this.setState({usd_price: usd, change: change});
@@ -56,10 +58,13 @@ class App extends Component {
   componentDidMount() {
     this.updateTime();
     this.updatePrice();
-    this.interval = setInterval(() => function () {
-        this.updateTime();
-        this.updatePrice();
-    }, 600000);
+    this.interval = setInterval(
+        function () {
+            this.updateTime();
+            this.updatePrice();
+            console.log("updating");
+    }.bind(this), 
+    600000);
   }
 
   componentWillUnmount() {
@@ -78,7 +83,7 @@ class App extends Component {
                   </div>
                   <div className="column">
                   {/*<div className="change">${this.state.usd_price} <span style={{color: this.state.change_color}}>{this.state.change}%</span> </div>*/}
-                  <div className="usd_price">${this.state.usd_price}<span className="change" style={{color: this.state.change_color}}> {this.state.change}%</span> </div>
+                  <div className="usd_price">${this.state.usd_price}<span className="change" style={{color: this.state.change_color}}> {this.state.change_sign}{this.state.change}%</span> </div>
                   </div>
                 </div>
               </div>
